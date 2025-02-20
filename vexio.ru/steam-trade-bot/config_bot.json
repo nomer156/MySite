@@ -1,0 +1,8 @@
+{
+  "accountName": "YourBotAccount",
+  "password": "YourBotPassword",
+  "shared_secret": "YourBotSharedSecret",
+  "apiKey": "YourSteamAPIKey",
+  "domain": "vexio.ru",
+  "accountId": "YourBotAccountID"
+}

@@ -1,0 +1,201 @@
+/* /vexio.ru/public_html/css/style.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #131313;
+  color: #ccc;
+  font-family: Arial, sans-serif;
+}
+
+.site-header, .site-footer {
+  background: #1a1c20;
+  padding: 10px 20px;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 60px;
+}
+
+.header-brand {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+}
+
+.logo img {
+  height: 32px;
+  margin-right: 8px;
+}
+
+.site-name {
+  font-weight: bold;
+}
+
+.main-nav {
+  text-align: center;
+  flex: 1;
+}
+
+.main-nav a {
+  margin: 0 10px;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.main-nav a:hover {
+  color: #fff;
+}
+
+.header-right {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.login-link {
+  color: #fff;
+  text-decoration: none;
+  background: #ed3a3a;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.login-link:hover {
+  background: #ff5555;
+}
+
+.user-menu-container {
+  position: relative;
+}
+
+.user-menu-button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  object-fit: cover;
+  margin-right: 6px;
+}
+
+.user-menu-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  background: #2a2c30;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  border-radius: 4px;
+  min-width: 120px;
+  z-index: 999;
+}
+
+.user-menu-dropdown.open {
+  display: block;
+}
+
+.user-menu-dropdown a {
+  display: block;
+  padding: 8px 12px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.user-menu-dropdown a:hover {
+  background: #444;
+}
+
+main {
+  padding: 20px;
+}
+
+.site-footer {
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+}
+
+.message {
+  background: #2c2c34;
+  padding: 10px;
+  border: 1px solid #444;
+  margin-bottom: 10px;
+}
+
+.play-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #ed3a3a;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.play-button:hover {
+  background: #ff5e5e;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 6px;
+}
+
+tr:nth-child(even) {
+  background: #1f1f24;
+}
+
+tr:nth-child(odd) {
+  background: #1a1c20;
+}
+
+/* Стили для турнирной сетки (пример) */
+.bracket {
+  margin-top: 20px;
+  background: #2f2f34;
+  padding: 10px;
+}
+
+.match-pair {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.slot {
+  width: 150px;
+  background: #1c1c24;
+  margin-right: 5px;
+  padding: 5px;
+  text-align: center;
+}
+
+.next-round {
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+}
