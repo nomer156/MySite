@@ -187,7 +187,7 @@ class LightOpenID
         return $use_secure_protocol ? 'https://' : 'http://';
     }
 
-    protected function request_curl($url, $method='GET', $params=array(), $update_claimed_id)
+    protected function request_curl($url, $update_claimed_id, $method = 'GET', $params = array())
     {
         $params = http_build_query($params, '', '&');
         $curl = curl_init($url . ($method == 'GET' && $params ? '?' . $params : ''));
@@ -317,7 +317,7 @@ class LightOpenID
         return $headers;
     }
 
-    protected function request_streams($url, $method='GET', $params=array(), $update_claimed_id)
+    protected function request_streams($url, $update_claimed_id, $method = 'GET', $params = array())
     {
         if(!$this->hostExists($url)) {
             throw new ErrorException("Could not connect to $url.", 404);
@@ -477,8 +477,8 @@ class LightOpenID
         
         return
             $use_curl
-                ? $this->request_curl($url, $method, $params, $update_claimed_id)
-                : $this->request_streams($url, $method, $params, $update_claimed_id);
+                ? $this->request_curl($url, $update_claimed_id, $method, $params)
+                : $this->request_streams($url, $update_claimed_id, $method, $params);
     }
     
     protected function proxy_url()
@@ -701,20 +701,20 @@ class LightOpenID
     }
     
     protected function get_provider_name($provider_url) {
-    	$result = '';
-    	
-    	if (!empty($provider_url)) {
-    		$tokens = array_reverse(
-    			explode('.', parse_url($provider_url, PHP_URL_HOST))
-    		);
-    		$result = strtolower(
-    			(count($tokens) > 1 && strlen($tokens[1]) > 3)
-    				? $tokens[1]
-    				: (count($tokens) > 2 ? $tokens[2] : '')
-    		);
-    	}
-    	
-    	return $result;
+        $result = '';
+        
+        if (!empty($provider_url)) {
+            $tokens = array_reverse(
+                explode('.', parse_url($provider_url, PHP_URL_HOST))
+            );
+            $result = strtolower(
+                (count($tokens) > 1 && strlen($tokens[1]) > 3)
+                    ? $tokens[1]
+                    : (count($tokens) > 2 ? $tokens[2] : '')
+            );
+        }
+        
+        return $result;
     }
 
     protected function sregParams()
@@ -900,12 +900,6 @@ class LightOpenID
             # we have to append it to the returnUrl, like authUrl_v1 does.
             $this->returnUrl .= (strpos($this->returnUrl, '?') ? '&' : '?')
                              .  'openid.claimed_id=' . $this->claimed_id;
-        }
-
-        if ($this->data['openid_return_to'] != $this->returnUrl) {
-            # The return_to url must match the url of current request.
-            # I'm assuming that no one will set the returnUrl to something that doesn't make sense.
-            return false;
         }
 
         $server = $this->discover($this->claimed_id);

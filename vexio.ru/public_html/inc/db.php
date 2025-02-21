@@ -1,12 +1,18 @@
 <?php
-// /vexio.ru/public_html/inc/db.php
 require_once 'config.php';
 
 try {
-    $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4';
-    $pdo = new PDO($dsn, DB_USER, DB_PASS, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-    ]);
+    $pdo = new PDO(
+        "mysql:host=" . DB_HOST . ";dbname=a1083063_vexio_new_db;charset=utf8mb4", // Обновленное имя базы
+        DB_USER,
+        DB_PASS,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ]
+    );
 } catch (PDOException $e) {
-    exit('Ошибка подключения к БД: ' . $e->getMessage());
+    die("Ошибка подключения к базе данных: " . $e->getMessage());
 }
+?>
