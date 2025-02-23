@@ -311,3 +311,16 @@ footer {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
     width: 100%;
 }
+.team-select {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+.team-select select {
+    background: rgba(26, 26, 26, 0.8);
+    color: #D3D3D3;
+    border: 1px solid #8A2BE2;
+    padding: 6px;
+    border-radius: 4px;
+}
